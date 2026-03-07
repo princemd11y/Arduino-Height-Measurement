@@ -1,0 +1,17 @@
+# Arduino
+*.hex
+*.elf
+*.eep
+*.lss
+*.map
+*.sym
+*.o
+*.d
+*.lst
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
