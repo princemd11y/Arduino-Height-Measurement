@@ -21,6 +21,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  //lecture de la temprature
   float t = dht.readTemperature();
 
   if (isnan(t)) {
@@ -28,25 +29,26 @@ void loop() {
     t = 20; 
     return;
   }
-  
+  //Calcul de la vitesse du son
   float v = 331.3 + (0.606*(t));
   Serial.print("Temperature : ");
   Serial.println(t);
 
-
+  //Affichage sur LCD
   lcd.setCursor(0, 1);  // col 0, ligne 0
   lcd.print("T: ");
-  lcd.setCursor(2, 1);  // col 0, ligne 0
+  lcd.setCursor(2, 1);  // col 2, ligne 0
   lcd.print(t);
-  lcd.setCursor(8, 1);  // col 0, ligne 0
+  lcd.setCursor(8, 1);  // col 8, ligne 0
   lcd.print("V: ");
-  lcd.setCursor(10, 1);  // col 0, ligne 0
+  lcd.setCursor(10, 1);  // col 10, ligne 0
   lcd.print(v);
 
 
   Serial.print("Vitesse du son : ");
   Serial.println(v);
   v = v*0.0001; //Conversion de m/s en cm/microsec
+  //caclul de la distance
   float distance = mesure(v);
 
   Serial.print("Distance : ");
@@ -54,9 +56,9 @@ void loop() {
 
   lcd.setCursor(0, 0);  // col 0, ligne 0
   lcd.print("Taille: ");
-  lcd.setCursor(8, 0);  // col 0, ligne 0
+  lcd.setCursor(8, 0);  // col 8, ligne 0
   lcd.print(distance);
-  lcd.setCursor(14, 0);  // col 0, ligne 0
+  lcd.setCursor(14, 0);  // col 14, ligne 0
   lcd.print("cm");
 }
 
